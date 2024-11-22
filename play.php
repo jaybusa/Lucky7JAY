@@ -130,9 +130,6 @@ function getCoordinateByposition($position) {
     } else {
         $x = $gridSize - 1 - (($position - 1) % $gridSize);
     }
-    $x = $x;
-    $y = $gridSize - 1 - $y;
-
     return "(".$x . "," . $y.")";
 }
 ?>
