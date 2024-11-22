@@ -121,41 +121,18 @@ function rollDice(){
 //     return ["x" => $x, "y" => $y];
 // }
 
-function getCoordinateByposition($position){
+function getCoordinateByposition($position) {
     global $gridSize;
-    // if($position < $gridSize){
-    if($position < $gridSize){
-        $y = 0;
-    }else{
-        $y = (int) ($position / $gridSize);
-        if($position % $gridSize == 0){
-            $y--;  
-        }    
+   
+    $y = intdiv($position - 1, $gridSize);
+    if ($y % 2 == 0) {
+        $x = ($position - 1) % $gridSize;
+    } else {
+        $x = $gridSize - 1 - (($position - 1) % $gridSize);
     }
-    
-    $x = $position % $gridSize;
-    if($y % 2 != 0){
-        if($y > 0){
-            $x = $x + ($position % $y);  
-        }else{
-            $x = $x + 1;  
-        }
-        
-    }else{
-        if($y > 0){
-            $x = $x - ($position % $y);  
-        }else{
-            $x = $x - 1;  
-        }
-    }
-    // }
-    // $x--;
-    
-    $y;
-    if($x < 0){
-        $x = $gridSize - 1;
-    }
+    $x = $x;
+    $y = $gridSize - 1 - $y;
+
     return "(".$x . "," . $y.")";
-    // return ["x" => $x, "y" => $y];
 }
 ?>
